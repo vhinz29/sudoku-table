@@ -1,0 +1,2637 @@
+import random
+play = ""
+repeat = True
+rotate = 0
+rotation = 1000
+
+def main_table(sudoku_table):
+    row = 0
+    column = 0
+    a = 0
+    print(">    " ,">" ," Suduko Table  <")
+    print("----------------------------------")
+    while a <= 8:
+        print("   " ,*sudoku_table[ row + 0: 3+ column], " | ", *sudoku_table[row + 3: 6 + column], " | ", *sudoku_table[row + 6: 9 + column])
+        if a == 2:
+            print("----------------------------------")
+        if a == 5:
+            print("----------------------------------")
+        column += 9
+        row += 9
+        a += 1
+    print("----------------------------------")
+
+
+def row_four(sudoku_table):
+    num_pick = [x for x in range(1, 10)]
+    variables = [], [], [], []
+    last_value, box_4_3, box_4_2, box_4_1 = variables
+
+    if a in [27]:
+        for x in [0, 9, 18]:
+            box_4_1.append(sudoku_table[x])
+
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        sudoku_table[a] = last_value[0]
+        h_r1_c4.append(sudoku_table[a])
+
+    elif a in [28]:
+        for x in [1, 10, 19]:
+            box_4_1.append(sudoku_table[x])
+        num_pick = [x for x in num_pick if x not in h_r1_c4]
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        sudoku_table[a] = last_value[0]
+        h_r1_c4.append(sudoku_table[a])
+
+    elif a in [29]:
+        for x in [2, 11, 20]:
+            box_4_1.append(sudoku_table[x])
+        num_pick = [x for x in num_pick if x not in h_r1_c4]
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        sudoku_table[a] = last_value[0]
+        h_r1_c4.append(sudoku_table[a])
+
+    elif a in [30]:
+        for x in [3, 12, 21]:
+            box_4_1.append(sudoku_table[x])
+        num_pick = [x for x in num_pick if x not in h_r1_c4]
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        sudoku_table[a] = last_value[0]
+        h_r1_c4.append(sudoku_table[a])
+
+    elif a in [31]:
+        for x in [4, 13, 22]:
+            box_4_1.append(sudoku_table[x])
+        num_pick = [x for x in num_pick if x not in h_r1_c4]
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        sudoku_table[a] = last_value[0]
+        h_r1_c4.append(sudoku_table[a])
+
+    elif a in [32]:
+        for x in [5, 14, 23]:
+            box_4_1.append(sudoku_table[x])
+            ver_5.append(sudoku_table[x])
+        num_pick = [x for x in num_pick if x not in h_r1_c4]
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        sudoku_table[a] = last_value[0]
+        h_r1_c4.append(sudoku_table[a])
+
+    elif a in [33]:
+        for x in [6, 15, 24]:
+            box_4_1.append(sudoku_table[x])
+            ver_6.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in h_r1_c4]
+        random.shuffle(last_value)
+        if last_value[0] not in box_4_1:
+            sudoku_table[a] = last_value[0]
+            h_r1_c4.append(sudoku_table[a])
+
+        elif last_value[1] not in box_4_1:
+            sudoku_table[a] = last_value[1]
+            h_r1_c4.append(sudoku_table[a])
+
+        elif last_value[2] not in box_4_1:
+            sudoku_table[a] = last_value[2]
+            h_r1_c4.append(sudoku_table[a])
+
+        elif last_value[0] in box_4_1:
+            if last_value[0] not in ver_5 and h_r1_c4[-1] not in box_4_1:
+                sudoku_table[a] = h_r1_c4[-1]
+                sudoku_table[32] = last_value[0]
+                h_r1_c4.append(h_r1_c4[-1])
+                h_r1_c4[5] = last_value[0]
+            else:
+                pass
+
+    elif a in [34]:
+        for x in [7, 16, 25]:
+            box_4_1.append(sudoku_table[x])
+            ver_7.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in h_r1_c4]
+
+        random.shuffle(last_value)
+        if last_value[0] not in box_4_1:
+            sudoku_table[a] = last_value[0]
+            h_r1_c4.append(sudoku_table[a])
+        elif last_value[1] not in box_4_1:
+            sudoku_table[a] = last_value[1]
+            h_r1_c4.append(sudoku_table[a])
+
+        elif last_value[0] in box_4_1:
+            if last_value[0] not in ver_6 and h_r1_c4[-1] not in box_4_1:
+                sudoku_table[a] = h_r1_c4[-1]
+                sudoku_table[33] = last_value[0]
+                h_r1_c4.append(h_r1_c4[-1])
+                h_r1_c4[6] = last_value[0]
+
+            elif last_value[0] not in ver_5 and h_r1_c4[-2] not in box_4_1:
+                sudoku_table[a] = h_r1_c4[-2]
+                sudoku_table[32] = last_value[0]
+                h_r1_c4.append(h_r1_c4[-2])
+                h_r1_c4[5] = last_value[0]
+
+            elif last_value[0] not in ver_4 and h_r1_c4[-3] not in box_4_1:
+                sudoku_table[a] = h_r1_c4[-3]
+                sudoku_table[31] = last_value[0]
+                h_r1_c4.append(h_r1_c4[-3])
+                h_r1_c4[4] = last_value[0]
+
+            else:
+                pass
+
+    elif a in [35]:
+        for x in [8, 17, 26]:
+            box_4_1.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in h_r1_c4]
+        random.shuffle(last_value)
+        if last_value[0] not in box_4_1:
+            sudoku_table[a] = last_value[0]
+            h_r1_c4.append(sudoku_table[a])
+        elif last_value[0] in box_4_1:
+            if last_value[0] not in ver_7 and h_r1_c4[-1] not in box_4_1:
+                sudoku_table[a] = h_r1_c4[-1]
+                sudoku_table[34] = last_value[0]
+                h_r1_c4.append(h_r1_c4[-1])
+                h_r1_c4[7] = last_value[0]
+
+            elif last_value[0] not in ver_6 and h_r1_c4[-2] not in box_4_1:
+                sudoku_table[a] = h_r1_c4[-2]
+                sudoku_table[33] = last_value[0]
+                h_r1_c4.append(h_r1_c4[-2])
+                h_r1_c4[6] = last_value[0]
+
+            elif last_value[0] not in ver_5 and h_r1_c4[-3] not in box_4_1:
+                sudoku_table[a] = h_r1_c4[-3]
+                sudoku_table[32] = last_value[0]
+                h_r1_c4.append(h_r1_c4[-3])
+                h_r1_c4[5] = last_value[0]
+            else:
+                pass
+
+
+def row_five(sudoku_table):
+    num_pick = [x for x in range(1, 10)]
+    variables = [], [], [], []
+    last_value, box_4_3, box_4_2, box_4_1 = variables
+    variables1 = [], [], [], [], [], [], [], [], []
+    hor_ver0, hor_ver1, hor_ver2, hor_ver3, hor_ver4, hor_ver5, hor_ver6, hor_ver7, hor_ver8 = variables1
+
+    if a in [36]:
+        for x in [0, 9, 18, 27]:
+            box_4_1.append(sudoku_table[x])
+            ver_0.append(sudoku_table[x])
+        for x in [27, 28, 29]:
+            box_4_1.append(sudoku_table[x])
+        box_4_1 = list(dict.fromkeys(box_4_1))
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        sudoku_table[a] = last_value[0]
+        h_r1_c5.append(sudoku_table[a])
+
+    if a in [37]:
+        for x in [1, 10, 19, 28]:
+            box_4_1.append(sudoku_table[x])
+            ver_1.append(sudoku_table[x])
+        for x in [27, 28, 29, 36]:
+            box_4_1.append(sudoku_table[x])
+        box_4_1 = list(dict.fromkeys(box_4_1))
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        sudoku_table[a] = last_value[0]
+        h_r1_c5.append(sudoku_table[a])
+
+    if a in [38]:
+        for x in [2, 11, 20, 29]:
+            box_4_1.append(sudoku_table[x])
+            ver_2.append(sudoku_table[x])
+        for x in [27, 28, 29, 36, 37]:
+            box_4_1.append(sudoku_table[x])
+        box_4_1 = list(dict.fromkeys(box_4_1))
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        sudoku_table[a] = last_value[0]
+        h_r1_c5.append(sudoku_table[a])
+
+    if a in [39]:
+        for x in [27, 28, 29, 36, 37, 38]:
+            box_row4.append(sudoku_table[x])
+        for x in [3, 12, 21, 30]:
+            box_4_1.append(sudoku_table[x])
+            ver_3.append(sudoku_table[x])
+        for x in [30, 31, 32]:
+            box_4_1.append(sudoku_table[x])
+        box_4_1 = list(dict.fromkeys(box_4_1))
+        last_value = [x for x in num_pick if x not in h_r1_c5]
+        random.shuffle(last_value)
+        if last_value[0] not in box_4_1:
+            sudoku_table[a] = last_value[0]
+            h_r1_c5.append(sudoku_table[a])
+        elif last_value[1] not in box_4_1:
+            sudoku_table[a] = last_value[1]
+            h_r1_c5.append(sudoku_table[a])
+        elif last_value[2] not in box_4_1:
+            sudoku_table[a] = last_value[2]
+            h_r1_c5.append(sudoku_table[a])
+        elif last_value[3] not in box_4_1:
+            sudoku_table[a] = last_value[3]
+            h_r1_c5.append(sudoku_table[a])
+        elif last_value[4] not in box_4_1:
+            sudoku_table[a] = last_value[4]
+            h_r1_c5.append(sudoku_table[a])
+        elif last_value[5] not in box_4_1:
+            sudoku_table[a] = last_value[5]
+            h_r1_c5.append(sudoku_table[a])
+        else:
+            pass
+
+    if a in [40]:
+        for x in [4, 13, 22, 31]:
+            box_4_1.append(sudoku_table[x])
+            ver_4.append(sudoku_table[x])
+        for x in [30, 31, 32, 39]:
+            box_4_1.append(sudoku_table[x])
+        box_4_1 = list(dict.fromkeys(box_4_1))
+        last_value = [x for x in num_pick if x not in h_r1_c5]
+        random.shuffle(last_value)
+        if last_value[0] not in box_4_1:
+            sudoku_table[a] = last_value[0]
+            h_r1_c5.append(sudoku_table[a])
+        elif last_value[1] not in box_4_1:
+            sudoku_table[a] = last_value[1]
+            h_r1_c5.append(sudoku_table[a])
+        elif last_value[2] not in box_4_1:
+            sudoku_table[a] = last_value[2]
+            h_r1_c5.append(sudoku_table[a])
+        elif last_value[3] not in box_4_1:
+            sudoku_table[a] = last_value[3]
+            h_r1_c5.append(sudoku_table[a])
+        elif last_value[4] not in box_4_1:
+            sudoku_table[a] = last_value[4]
+            h_r1_c5.append(sudoku_table[a])
+        else:
+            pass
+
+    if a in [41]:
+        ver_temp_1 = []
+        ver_temp_2 = []
+        for x in [5, 14, 23, 32]:
+            box_4_1.append(sudoku_table[x])
+            ver_5.append(sudoku_table[x])
+        for x in [30, 31, 32, 39, 40]:
+            box_4_1.append(sudoku_table[x])
+        box_4_1 = list(dict.fromkeys(box_4_1))
+        for x in [5, 14, 23, 32]:
+            ver_temp_1.append(sudoku_table[x])
+            ver_temp_2.append(sudoku_table[x])
+        for x in [30, 31, 32, 39]:
+            ver_temp_1.append(sudoku_table[x])
+        for x in [30, 31, 32, 40]:
+            ver_temp_2.append(sudoku_table[x])
+        ver_temp_2 = list(dict.fromkeys(ver_temp_2))
+        ver_temp_1 = list(dict.fromkeys(ver_temp_1))
+        for x in ver_0:
+            hor_ver0.append(x)
+        for x in ver_1:
+            hor_ver1.append(x)
+        for x in ver_2:
+            hor_ver2.append(x)
+        for x in ver_3:
+            hor_ver3.append(x)
+        for x in ver_4:
+            hor_ver4.append(x)
+        for x in ver_5:
+            hor_ver5.append(x)
+        for x in [30, 31, 32, 39, 40]:
+            box_row5.append(sudoku_table[x])
+        for x in box_row4:
+            hor_ver2.append(x)
+            hor_ver1.append(x)
+            hor_ver0.append(x)
+        for x in box_row5:
+            hor_ver3.append(x)
+            hor_ver4.append(x)
+            hor_ver5.append(x)
+        hor_ver0 = list(dict.fromkeys(hor_ver0))
+        hor_ver1 = list(dict.fromkeys(hor_ver1))
+        hor_ver2 = list(dict.fromkeys(hor_ver2))
+        hor_ver3 = list(dict.fromkeys(hor_ver3))
+        hor_ver4 = list(dict.fromkeys(hor_ver4))
+        hor_ver5 = list(dict.fromkeys(hor_ver5))
+        box_4_1 = list(dict.fromkeys(box_4_1))
+        last_value = [x for x in num_pick if x not in h_r1_c5]
+        random.shuffle(last_value)
+        if last_value[0] not in box_4_1:
+            sudoku_table[a] = last_value[0]
+            h_r1_c5.append(sudoku_table[a])
+        elif last_value[1] not in box_4_1:
+            sudoku_table[a] = last_value[1]
+            h_r1_c5.append(sudoku_table[a])
+        elif last_value[2] not in box_4_1:
+            sudoku_table[a] = last_value[2]
+            h_r1_c5.append(sudoku_table[a])
+        elif last_value[3] not in box_4_1:
+            sudoku_table[a] = last_value[3]
+            h_r1_c5.append(sudoku_table[a])
+        elif last_value[0] in box_4_1:
+            if last_value[0] not in hor_ver4 and h_r1_c5[-1] not in ver_temp_1:
+                sudoku_table[a] = h_r1_c5[-1]
+                sudoku_table[40] = last_value[0]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[4] = last_value[0]
+            elif last_value[0] not in hor_ver3 and h_r1_c5[-2] not in ver_temp_2:
+                sudoku_table[a] = h_r1_c5[-2]
+                sudoku_table[39] = last_value[0]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[3] = last_value[0]
+            elif last_value[0] not in hor_ver2 and h_r1_c5[-3] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-3]
+                sudoku_table[38] = last_value[0]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[2] = last_value[0]
+            elif last_value[0] not in hor_ver1 and h_r1_c5[-4] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-4]
+                sudoku_table[37] = last_value[0]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[1] = last_value[0]
+            elif last_value[0] not in hor_ver0 and h_r1_c5[-5] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-5]
+                sudoku_table[36] = last_value[0]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[0] = last_value[0]
+        else:
+            pass
+    if a in [42]:
+        for x in ver_0:
+            hor_ver0.append(x)
+        for x in ver_1:
+            hor_ver1.append(x)
+        for x in ver_2:
+            hor_ver2.append(x)
+        for x in ver_3:
+            hor_ver3.append(x)
+        for x in ver_4:
+            hor_ver4.append(x)
+        for x in ver_5:
+            hor_ver5.append(x)
+        for x in [30, 31, 32, 39, 40, 41]:
+            box_row5.append(sudoku_table[x])
+
+        for x in box_row4:
+            hor_ver2.append(x)
+            hor_ver1.append(x)
+            hor_ver0.append(x)
+        for x in box_row5:
+            hor_ver3.append(x)
+            hor_ver4.append(x)
+            hor_ver5.append(x)
+
+        hor_ver0 = list(dict.fromkeys(hor_ver0))
+        hor_ver1 = list(dict.fromkeys(hor_ver1))
+        hor_ver2 = list(dict.fromkeys(hor_ver2))
+        hor_ver3 = list(dict.fromkeys(hor_ver3))
+        hor_ver4 = list(dict.fromkeys(hor_ver4))
+        hor_ver5 = list(dict.fromkeys(hor_ver5))
+        for x in ver_6:
+            hor_ver6.append(x)
+        for x in [33, 34, 35, 42]:
+            hor_ver6.append(sudoku_table[x])
+        hor_ver6 = list(dict.fromkeys(hor_ver6))
+        ver_6.append(sudoku_table[33])
+        for x in [6, 15, 24, 33]:
+            box_4_1.append(sudoku_table[x])
+        for x in [33, 34, 35]:
+            box_4_1.append(sudoku_table[x])
+        box_4_1 = list(dict.fromkeys(box_4_1))
+        last_value = [x for x in num_pick if x not in h_r1_c5]
+        random.shuffle(last_value)
+        if last_value[0] not in box_4_1:
+            sudoku_table[a] = last_value[0]
+            h_r1_c5.append(sudoku_table[a])
+        elif last_value[1] not in box_4_1:
+            sudoku_table[a] = last_value[1]
+            h_r1_c5.append(sudoku_table[a])
+        elif last_value[2] not in box_4_1:
+            sudoku_table[a] = last_value[2]
+            h_r1_c5.append(sudoku_table[a])
+        elif last_value[0] in box_4_1:
+            if last_value[0] not in hor_ver5 and h_r1_c5[-1] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-1]
+                sudoku_table[41] = last_value[0]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[5] = last_value[0]
+            elif last_value[0] not in hor_ver4 and h_r1_c5[-2] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-2]
+                sudoku_table[40] = last_value[0]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[4] = last_value[0]
+            elif last_value[0] not in hor_ver3 and h_r1_c5[-3] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-3]
+                sudoku_table[39] = last_value[0]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[3] = last_value[0]
+            elif last_value[0] not in hor_ver2 and h_r1_c5[-4] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-4]
+                sudoku_table[38] = last_value[0]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[2] = last_value[0]
+            elif last_value[0] not in hor_ver1 and h_r1_c5[-5] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-5]
+                sudoku_table[37] = last_value[0]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[1] = last_value[0]
+            elif len(h_r1_c5) == 6:
+                if last_value[0] not in hor_ver0 and h_r1_c5[-6] not in box_4_1:
+                    print("last value", last_value[0])
+                    print("h_r1_c5[-6]", h_r1_c5[-6])
+                    sudoku_table[a] = h_r1_c5[-6]
+                    sudoku_table[36] = last_value[0]
+                    h_r1_c5.append(sudoku_table[a])
+                    h_r1_c5[0] = last_value[0]
+        elif last_value[1] in box_4_1:
+            if last_value[1] not in hor_ver5 and h_r1_c5[-1] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-1]
+                sudoku_table[41] = last_value[1]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[5] = last_value[1]
+            elif last_value[1] not in hor_ver4 and h_r1_c5[-2] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-2]
+                sudoku_table[40] = last_value[1]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[4] = last_value[1]
+            elif last_value[1] not in hor_ver3 and h_r1_c5[-3] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-3]
+                sudoku_table[39] = last_value[1]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[3] = last_value[1]
+            elif last_value[1] not in hor_ver2 and h_r1_c5[-4] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-4]
+                sudoku_table[38] = last_value[1]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[2] = last_value[1]
+            elif last_value[1] not in hor_ver1 and h_r1_c5[-5] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-5]
+                sudoku_table[37] = last_value[1]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[1] = last_value[1]
+            elif len(h_r1_c5) == 6:
+                if last_value[1] not in hor_ver0 and h_r1_c5[-6] not in box_4_1:
+                    sudoku_table[a] = h_r1_c5[-6]
+                    sudoku_table[36] = last_value[1]
+                    h_r1_c5.append(sudoku_table[a])
+                    h_r1_c5[0] = last_value[1]
+        elif last_value[2] in box_4_1:
+            if last_value[2] not in hor_ver5 and h_r1_c5[-1] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-1]
+                sudoku_table[41] = last_value[2]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[5] = last_value[2]
+            elif last_value[2] not in hor_ver4 and h_r1_c5[-2] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-2]
+                sudoku_table[40] = last_value[2]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[4] = last_value[2]
+            elif last_value[2] not in hor_ver3 and h_r1_c5[-3] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-3]
+                sudoku_table[39] = last_value[2]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[3] = last_value[2]
+            elif last_value[2] not in hor_ver2 and h_r1_c5[-4] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-4]
+                sudoku_table[38] = last_value[2]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[2] = last_value[2]
+            elif last_value[2] not in hor_ver1 and h_r1_c5[-5] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-5]
+                sudoku_table[37] = last_value[2]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[1] = last_value[2]
+            elif len(h_r1_c5) == 6:
+                if last_value[2] not in hor_ver0 and h_r1_c5[-6] not in box_4_1:
+                    sudoku_table[a] = h_r1_c5[-6]
+                    sudoku_table[36] = last_value[2]
+                    h_r1_c5.append(sudoku_table[a])
+                    h_r1_c5[0] = last_value[2]
+        else:
+            pass
+    if a in [43]:
+        ver_temp7 = []
+        ver_7.append(sudoku_table[34])
+        for x in ver_0:
+            hor_ver0.append(x)
+        for x in ver_1:
+            hor_ver1.append(x)
+        for x in ver_2:
+            hor_ver2.append(x)
+        for x in ver_3:
+            hor_ver3.append(x)
+        for x in ver_4:
+            hor_ver4.append(x)
+        for x in ver_5:
+            hor_ver5.append(x)
+        for x in box_row4:
+            hor_ver2.append(x)
+            hor_ver1.append(x)
+            hor_ver0.append(x)
+        for x in box_row5:
+            hor_ver3.append(x)
+            hor_ver4.append(x)
+            hor_ver5.append(x)
+        hor_ver0 = list(dict.fromkeys(hor_ver0))
+        hor_ver1 = list(dict.fromkeys(hor_ver1))
+        hor_ver2 = list(dict.fromkeys(hor_ver2))
+        hor_ver3 = list(dict.fromkeys(hor_ver3))
+        hor_ver4 = list(dict.fromkeys(hor_ver4))
+        hor_ver5 = list(dict.fromkeys(hor_ver5))
+        for x in ver_6:
+            hor_ver6.append(x)
+        for x in [33, 34, 35, 42]:
+            hor_ver6.append(sudoku_table[x])
+        hor_ver6 = list(dict.fromkeys(hor_ver6))
+        for x in [7, 16, 25, 34]:
+            box_4_1.append(sudoku_table[x])
+        for x in [7, 16, 25, 33, 34, 35]:
+            ver_temp7.append(sudoku_table[x])
+        for x in [33, 34, 35, 42]:
+            box_4_1.append(sudoku_table[x])
+        ver_temp7 = list(dict.fromkeys(ver_temp7))
+        box_4_1 = list(dict.fromkeys(box_4_1))
+        last_value = [x for x in num_pick if x not in h_r1_c5]
+        random.shuffle(last_value)
+
+        if last_value[0] not in box_4_1:
+            sudoku_table[a] = last_value[0]
+            h_r1_c5.append(sudoku_table[a])
+        elif last_value[1] not in box_4_1:
+            sudoku_table[a] = last_value[1]
+            h_r1_c5.append(sudoku_table[a])
+        elif last_value[0] in box_4_1:
+            if last_value[0] not in hor_ver6 and h_r1_c5[-1] not in ver_temp7:
+                sudoku_table[a] = h_r1_c5[-1]
+                sudoku_table[42] = last_value[0]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[6] = last_value[0]
+            elif last_value[0] not in hor_ver5 and h_r1_c5[-2] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-2]
+                sudoku_table[41] = last_value[0]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[5] = last_value[0]
+            elif last_value[0] not in hor_ver4 and h_r1_c5[-3] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-3]
+                sudoku_table[40] = last_value[0]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[4] = last_value[0]
+            elif last_value[0] not in hor_ver3 and h_r1_c5[-4] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-4]
+                sudoku_table[39] = last_value[0]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[3] = last_value[0]
+            elif last_value[0] not in hor_ver2 and h_r1_c5[-5] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-5]
+                sudoku_table[38] = last_value[0]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[2] = last_value[0]
+            elif last_value[0] not in hor_ver1 and h_r1_c5[-6] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-6]
+                sudoku_table[37] = last_value[0]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[1] = last_value[0]
+            elif len(h_r1_c5) == 7:
+                if last_value[0] not in hor_ver0 and h_r1_c5[-7] not in box_4_1:
+                    sudoku_table[a] = h_r1_c5[-7]
+                    sudoku_table[36] = last_value[0]
+                    h_r1_c5.append(sudoku_table[a])
+                    h_r1_c5[0] = last_value[0]
+
+            elif last_value[1] not in hor_ver6 and h_r1_c5[-1] not in ver_temp7:
+                sudoku_table[a] = h_r1_c5[-1]
+                sudoku_table[42] = last_value[1]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[6] = last_value[1]
+            elif last_value[1] not in hor_ver5 and h_r1_c5[-2] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-2]
+                sudoku_table[41] = last_value[1]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[5] = last_value[1]
+            elif last_value[1] not in hor_ver4 and h_r1_c5[-3] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-3]
+                sudoku_table[40] = last_value[1]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[4] = last_value[1]
+            elif last_value[1] not in hor_ver3 and h_r1_c5[-4] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-4]
+                sudoku_table[39] = last_value[1]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[3] = last_value[1]
+            elif last_value[1] not in hor_ver2 and h_r1_c5[-5] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-5]
+                sudoku_table[38] = last_value[1]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[2] = last_value[1]
+            elif last_value[1] not in hor_ver1 and h_r1_c5[-6] not in box_4_1:
+                sudoku_table[a] = h_r1_c5[-6]
+                sudoku_table[37] = last_value[1]
+                h_r1_c5.append(sudoku_table[a])
+                h_r1_c5[1] = last_value[1]
+            elif len(h_r1_c5) == 7:
+                if last_value[1] not in hor_ver0 and h_r1_c5[-7] not in box_4_1:
+                    sudoku_table[a] = h_r1_c5[-7]
+                    sudoku_table[36] = last_value[1]
+                    h_r1_c5.append(sudoku_table[a])
+                    h_r1_c5[0] = last_value[1]
+        else:
+            pass
+
+    if a in [44]:
+        ver_temp7 = []
+        hor_vert = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        ver_7.append(sudoku_table[35])
+        for x in [6, 15, 24, 33]:
+            vertic_a.append(sudoku_table[x])
+        for x in [7, 16, 25, 34]:
+            vertic_b.append(sudoku_table[x])
+        for x in [8, 17, 26, 35]:
+            vertic_c.append(sudoku_table[x])
+        for x in [36, 37, 38, 39, 40, 41]:
+            box_4_2.append(sudoku_table[x])
+        box_4_2 = [x for x in num_pick if x not in box_4_2]
+        random.shuffle(box_4_2)
+        ver_7.append(sudoku_table[35])
+        for x in ver_0:
+            hor_ver0.append(x)
+        for x in ver_1:
+            hor_ver1.append(x)
+        for x in ver_2:
+            hor_ver2.append(x)
+        for x in ver_3:
+            hor_ver3.append(x)
+        for x in ver_4:
+            hor_ver4.append(x)
+        for x in ver_5:
+            hor_ver5.append(x)
+        for x in [33, 34, 35, 42]:
+            box_row6.append(sudoku_table[x])
+        for x in [7, 16, 25, 34]:
+            hor_ver7.append(sudoku_table[x])
+        for x in [8, 17, 26, 35]:
+            hor_ver8.append(sudoku_table[x])
+            hor_vert.append(sudoku_table[x])
+        for x in [33, 34, 35, 43]:
+            hor_vert.append(sudoku_table[x])
+        for x in box_row6:
+            hor_ver8.append(x)
+        for x in box_row4:
+            hor_ver2.append(x)
+            hor_ver1.append(x)
+            hor_ver0.append(x)
+        for x in box_row5:
+            hor_ver3.append(x)
+            hor_ver4.append(x)
+            hor_ver5.append(x)
+        hor_vert = list(dict.fromkeys(hor_vert))
+        hor_ver0 = list(dict.fromkeys(hor_ver0))
+        hor_ver1 = list(dict.fromkeys(hor_ver1))
+        hor_ver2 = list(dict.fromkeys(hor_ver2))
+        hor_ver3 = list(dict.fromkeys(hor_ver3))
+        hor_ver4 = list(dict.fromkeys(hor_ver4))
+        hor_ver5 = list(dict.fromkeys(hor_ver5))
+        hor_ver8 = list(dict.fromkeys(hor_ver8))
+        for x in ver_6:
+            hor_ver6.append(x)
+        for x in [33, 34, 35, 42, 43]:
+            hor_ver6.append(sudoku_table[x])
+        hor_ver6 = list(dict.fromkeys(hor_ver6))
+        for x in [8, 17, 26, 35]:
+            box_4_1.append(sudoku_table[x])
+        for x in [7, 16, 25, 33, 34, 35]:
+            ver_temp7.append(sudoku_table[x])
+        for x in [33, 34, 35, 42, 43]:
+            hor_ver7.append(sudoku_table[x])
+            box_4_1.append(sudoku_table[x])
+        hor_ver7 = list(dict.fromkeys(hor_ver7))
+        ver_temp7 = list(dict.fromkeys(ver_temp7))
+        box_4_1 = list(dict.fromkeys(box_4_1))
+        for x in [8, 17, 26, 35]:
+            box_4_1.append(sudoku_table[x])
+        for x in [33, 34, 35, 42, 43]:
+            box_4_1.append(sudoku_table[x])
+        box_4_1 = list(dict.fromkeys(box_4_1))
+        last_value = [x for x in num_pick if x not in h_r1_c5]
+        random.shuffle(last_value)
+
+        if last_value[0] not in box_4_1:
+            sudoku_table[a] = last_value[0]
+            h_r1_c5.append(sudoku_table[a])
+        else:
+            pass
+
+        routes = 0
+        looping = True
+        horizontals = []
+        counting = 0
+        for x in [36, 37, 38, 39, 40, 41, 42, 43, 44]:
+            horizontals.append(sudoku_table[x])
+        for x in horizontals:
+            if x == 0:
+                routes += 1
+
+        if routes > 0:
+
+            while looping == True:
+                variables = [], [], [], [], [], [], [], [], []
+                hor_ve0, hor_ve1, hor_ve2, hor_ve3, hor_ve4, hor_ve5, hor_ve6, hor_ve7, hor_ve8 = variables
+                for x in [0, 9, 18, 27, 28, 29]:
+                    hor_ve0.append(sudoku_table[x])
+                for x in [1, 10, 19, 27, 28, 29]:
+                    hor_ve1.append(sudoku_table[x])
+                for x in [2, 11, 20, 27, 28, 29]:
+                    hor_ve2.append(sudoku_table[x])
+                for x in [3, 12, 21, 30, 31, 32]:
+                    hor_ve3.append(sudoku_table[x])
+                for x in [4, 13, 22, 30, 31, 32]:
+                    hor_ve4.append(sudoku_table[x])
+                for x in [5, 14, 23, 30, 31, 32]:
+                    hor_ve5.append(sudoku_table[x])
+                for x in [6, 15, 24, 33, 34, 35]:
+                    hor_ve6.append(sudoku_table[x])
+                for x in [7, 16, 25, 33, 34, 35]:
+                    hor_ve7.append(sudoku_table[x])
+                for x in [8, 17, 26, 33, 34, 35]:
+                    hor_ve8.append(sudoku_table[x])
+
+                columns = []
+                correct = 0
+                value = 44
+                sudoku_correct = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+                num_picks = []
+                num_picks = [x for x in range(1, 10)]
+                random.shuffle(num_picks)
+                loops = 0
+
+                count = 0
+                while count < 9:
+                    if count == 0:
+                        # if num_picks[0] not in hor_ve0:
+                        for x in num_picks:
+                            if x not in hor_ve0:
+                                if sudoku_correct[0] == 0:
+                                    sudoku_correct[0] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 1:
+                        hor_ve1.append(sudoku_correct[-1])
+                        hor_ve1 = list(dict.fromkeys(hor_ve1))
+                        for x in num_picks:
+                            if x not in hor_ve1:
+                                if sudoku_correct[1] == 0:
+                                    sudoku_correct[1] = x
+                                    num_picks.remove(x)
+
+                        count += 1
+                    if count == 2:
+                        hor_ve2.append(sudoku_correct[-2])
+                        hor_ve2 = list(dict.fromkeys(hor_ve2))
+                        for x in num_picks:
+                            if x not in hor_ve2:
+                                if sudoku_correct[2] == 0:
+                                    sudoku_correct[2] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 3:
+                        hor_ve3.append(sudoku_correct[-3])
+                        hor_ve3 = list(dict.fromkeys(hor_ve3))
+                        for x in num_picks:
+                            if x not in hor_ve3:
+                                if sudoku_correct[3] == 0:
+                                    sudoku_correct[3] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 4:
+                        hor_ve4.append(sudoku_correct[-4])
+                        hor_ve4 = list(dict.fromkeys(hor_ve4))
+                        for x in num_picks:
+                            if x not in hor_ve4:
+                                if sudoku_correct[4] == 0:
+                                    sudoku_correct[4] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 5:
+                        hor_ve5.append(sudoku_correct[-5])
+                        hor_ve5 = list(dict.fromkeys(hor_ve5))
+                        for x in num_picks:
+                            if x not in hor_ve5:
+                                if sudoku_correct[5] == 0:
+                                    sudoku_correct[5] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 6:
+                        hor_ve6.append(sudoku_correct[-6])
+                        hor_ve6 = list(dict.fromkeys(hor_ve6))
+                        for x in num_picks:
+                            if x not in hor_ve6:
+                                if sudoku_correct[6] == 0:
+                                    sudoku_correct[6] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 7:
+                        hor_ve7.append(sudoku_correct[-7])
+                        hor_ve7 = list(dict.fromkeys(hor_ve7))
+                        for x in num_picks:
+                            if x not in hor_ve7:
+                                if sudoku_correct[7] == 0:
+                                    sudoku_correct[7] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 8:
+                        hor_ve8.append(sudoku_correct[-8])
+                        hor_ve8 = list(dict.fromkeys(hor_ve8))
+                        for x in num_picks:
+                            if x not in hor_ve8:
+                                if sudoku_correct[8] == 0:
+                                    sudoku_correct[8] = x
+                                    num_picks.remove(x)
+                        count += 1
+
+                if count == 9:
+                    for x in sudoku_correct:
+                        if x != 0:
+                            pass
+                        else:
+                            correct += 1
+                counting += 1
+
+                if correct == 0:
+
+                    sudoku_table[36] = sudoku_correct[0]
+                    sudoku_table[37] = sudoku_correct[1]
+                    sudoku_table[38] = sudoku_correct[2]
+                    sudoku_table[39] = sudoku_correct[3]
+                    sudoku_table[40] = sudoku_correct[4]
+                    sudoku_table[41] = sudoku_correct[5]
+                    sudoku_table[42] = sudoku_correct[6]
+                    sudoku_table[43] = sudoku_correct[7]
+                    sudoku_table[44] = sudoku_correct[8]
+                    break
+                    looping == False
+                else:
+                    pass
+                if counting == 50:
+                    break
+                    looping = False
+
+
+def row_six(sudoku_table):
+    num_pick = [x for x in range(1, 10)]
+    variables = [], [], [], []
+    last_value, box_4_3, box_4_2, box_4_1 = variables
+    variables1 = [], [], [], [], [], [], [], [], []
+    hor_ver0, hor_ver1, hor_ver2, hor_ver3, hor_ver4, hor_ver5, hor_ver6, hor_ver7, hor_ver8 = variables1
+
+    if a in [45]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        for x in [27, 28, 29, 36, 37, 38]:
+            box_temp_row4.append(sudoku_table[x])
+        for x in [0, 9, 18]:
+            vertic.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in box_temp_row4]
+        random.shuffle(last_value)
+        if last_value[0] not in vertic:
+            sudoku_table[a] = last_value[0]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[1] not in vertic:
+            sudoku_table[a] = last_value[1]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[2] not in vertic:
+            sudoku_table[a] = last_value[2]
+            h_r1_c6.append(sudoku_table[a])
+        else:
+            pass
+        for x in [45]:
+            horizontal.append(sudoku_table[x])
+
+    if a in [46]:
+        vertic = []
+        box_temp_row4 = []
+        horizontal = []
+        for x in [27, 28, 29, 36, 37, 38, 45]:
+            box_temp_row4.append(sudoku_table[x])
+        for x in [1, 10, 19]:
+            vertic.append(sudoku_table[x])
+        for x in box_temp_row4:
+            box_4_2.append(x)
+        for x in vertic:
+            box_4_2.append(x)
+        box_4_2 = list(dict.fromkeys(box_4_2))
+        last_value = [x for x in num_pick if x not in h_r1_c6]
+        random.shuffle(last_value)
+        if last_value[0] not in box_4_2:
+            sudoku_table[a] = last_value[0]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[1] not in box_4_2:
+            sudoku_table[a] = last_value[1]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[2] not in box_4_2:
+            sudoku_table[a] = last_value[2]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[3] not in box_4_2:
+            sudoku_table[a] = last_value[3]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[4] not in box_4_2:
+            sudoku_table[a] = last_value[4]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[5] not in box_4_2:
+            sudoku_table[a] = last_value[5]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[6] not in box_4_2:
+            sudoku_table[a] = last_value[6]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[7] not in box_4_2:
+            sudoku_table[a] = last_value[7]
+            h_r1_c6.append(sudoku_table[a])
+        else:
+            pass
+        for x in [45, 46]:
+            horizontal.append(sudoku_table[x])
+    if a in [47]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+        for x in [0, 9, 18]:
+            vertic_a.append(sudoku_table[x])
+        for x in [1, 10, 19]:
+            vertic_b.append(sudoku_table[x])
+        for x in [2, 11, 20]:
+            vertic_c.append(sudoku_table[x])
+        for x in [27, 28, 29, 36, 37, 38]:
+            box_4_1.append(sudoku_table[x])
+        box_4_1 = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(box_4_1)
+        for x in [27, 28, 29, 36, 37, 38, 45, 46]:
+            box_temp_row4.append(sudoku_table[x])
+        for x in [2, 11, 20]:
+            vertic.append(sudoku_table[x])
+        for x in box_temp_row4:
+            box_4_2.append(x)
+        for x in vertic:
+            box_4_2.append(x)
+        box_4_2 = list(dict.fromkeys(box_4_2))
+        last_value = [x for x in num_pick if x not in h_r1_c6]
+        random.shuffle(last_value)
+        if last_value[0] not in box_4_2:
+            sudoku_table[a] = last_value[0]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[1] not in box_4_2:
+            sudoku_table[a] = last_value[1]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[2] not in box_4_2:
+            sudoku_table[a] = last_value[2]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[3] not in box_4_2:
+            sudoku_table[a] = last_value[3]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[4] not in box_4_2:
+            sudoku_table[a] = last_value[4]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[5] not in box_4_2:
+            sudoku_table[a] = last_value[5]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[6] not in box_4_2:
+            sudoku_table[a] = last_value[6]
+            h_r1_c6.append(sudoku_table[a])
+        else:
+            pass
+
+        for x in [45, 46, 47]:
+            horizontal.append(sudoku_table[x])
+
+    if a in [48]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        for x in [30, 31, 32, 39, 40, 41]:
+            box_temp_row4.append(sudoku_table[x])
+        for x in [3, 12, 21]:
+            vertic.append(sudoku_table[x])
+        for x in box_temp_row4:
+            box_4_2.append(x)
+        for x in vertic:
+            box_4_2.append(x)
+        box_4_2 = list(dict.fromkeys(box_4_2))
+        last_value = [x for x in num_pick if x not in h_r1_c6]
+        random.shuffle(last_value)
+        if last_value[0] not in box_4_2:
+            sudoku_table[a] = last_value[0]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[1] not in box_4_2:
+            sudoku_table[a] = last_value[1]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[2] not in box_4_2:
+            sudoku_table[a] = last_value[2]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[3] not in box_4_2:
+            sudoku_table[a] = last_value[3]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[4] not in box_4_2:
+            sudoku_table[a] = last_value[4]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[5] not in box_4_2:
+            sudoku_table[a] = last_value[5]
+            h_r1_c6.append(sudoku_table[a])
+        else:
+            pass
+        for x in [45, 46, 47, 48]:
+            horizontal.append(sudoku_table[x])
+
+    if a in [49]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        for x in [30, 31, 32, 39, 40, 41, 48]:
+            box_temp_row4.append(sudoku_table[x])
+        for x in [4, 13, 22]:
+            vertic.append(sudoku_table[x])
+        for x in box_temp_row4:
+            box_4_2.append(x)
+        for x in vertic:
+            box_4_2.append(x)
+        box_4_2 = list(dict.fromkeys(box_4_2))
+        last_value = [x for x in num_pick if x not in h_r1_c6]
+        random.shuffle(last_value)
+        if last_value[0] not in box_4_2:
+            sudoku_table[a] = last_value[0]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[1] not in box_4_2:
+            sudoku_table[a] = last_value[1]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[2] not in box_4_2:
+            sudoku_table[a] = last_value[2]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[3] not in box_4_2:
+            sudoku_table[a] = last_value[3]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[4] not in box_4_2:
+            sudoku_table[a] = last_value[4]
+            h_r1_c6.append(sudoku_table[a])
+        else:
+            pass
+
+        for x in [45, 46, 47, 48, 49]:
+            horizontal.append(sudoku_table[x])
+    if a in [50]:
+        variables1 = [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
+        hor_ver0, hor_ver1, hor_ver2, hor_ver3, hor_ver4, hor_ver5, hor_ver6, hor_ver7, hor_ver8, hor_ve5, hor_ve4, hor_ve3, hor_ve2, hor_ve1, hor_ve0 = variables1
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+        for x in [5, 14, 23, 30, 31, 32, 39, 40, 41, 48]:
+            hor_ve5.append(sudoku_table[x])
+        hor_ve5 = list(dict.fromkeys(hor_ve5))
+        for x in [5, 14, 23, 30, 31, 32, 39, 40, 41, 49]:
+            hor_ve4.append(sudoku_table[x])
+        hor_ve4 = list(dict.fromkeys(hor_ve4))
+
+        for x in [4, 13, 22, 30, 31, 32, 39, 40, 41, 48, 49]:
+            hor_ver4.append(sudoku_table[x])
+        hor_ver4 = list(dict.fromkeys(hor_ver4))
+        for x in [3, 12, 21, 30, 31, 32, 39, 40, 41, 48, 49]:
+            hor_ver3.append(sudoku_table[x])
+        hor_ver3 = list(dict.fromkeys(hor_ver3))
+
+        for x in [3, 12, 21]:
+            vertic_a.append(sudoku_table[x])
+        for x in [4, 13, 22]:
+            vertic_b.append(sudoku_table[x])
+        for x in [5, 14, 23]:
+            vertic_c.append(sudoku_table[x])
+        for x in [30, 31, 32, 39, 40, 41]:
+            box_4_1.append(sudoku_table[x])
+        box_4_1 = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(box_4_1)
+        for x in [30, 31, 32, 39, 40, 41, 48, 49]:
+            box_temp_row4.append(sudoku_table[x])
+        for x in [5, 14, 23]:
+            vertic.append(sudoku_table[x])
+        for x in box_temp_row4:
+            box_4_2.append(x)
+        for x in vertic:
+            box_4_2.append(x)
+        box_4_2 = list(dict.fromkeys(box_4_2))
+        last_value = [x for x in num_pick if x not in h_r1_c6]
+        random.shuffle(last_value)
+        if last_value[0] not in box_4_2:
+            sudoku_table[a] = last_value[0]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[1] not in box_4_2:
+            sudoku_table[a] = last_value[1]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[2] not in box_4_2:
+            sudoku_table[a] = last_value[2]
+            h_r1_c6.append(sudoku_table[a])
+        elif last_value[3] not in box_4_2:
+            sudoku_table[a] = last_value[3]
+            h_r1_c6.append(sudoku_table[a])
+        else:
+            pass
+        for x in [45, 46, 47, 48, 49, 50]:
+            horizontal.append(sudoku_table[x])
+
+    if a in [51]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        for x in [45, 46, 47, 48, 49, 50]:
+            box_4_1.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        for x in [6, 15, 24]:
+            vertic.append(sudoku_table[x])
+
+        if last_value[0] not in vertic:
+            sudoku_table[a] = last_value[0]
+        elif last_value[1] not in vertic:
+            sudoku_table[a] = last_value[1]
+        elif last_value[2] not in vertic:
+            sudoku_table[a] = last_value[2]
+        else:
+            pass
+        for x in [45, 46, 47, 48, 49, 50, 51]:
+            horizontal.append(sudoku_table[x])
+
+    if a in [52]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        for x in [45, 46, 47, 48, 49, 50, 51]:
+            box_4_1.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        for x in [7, 16, 25]:
+            vertic.append(sudoku_table[x])
+        if last_value[0] not in vertic:
+            sudoku_table[a] = last_value[0]
+        elif last_value[1] not in vertic:
+            sudoku_table[a] = last_value[1]
+        else:
+            pass
+
+        for x in [45, 46, 47, 48, 49, 50, 51, 52]:
+            horizontal.append(sudoku_table[x])
+    if a in [53]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+        for x in [6, 15, 24]:
+            vertic_a.append(sudoku_table[x])
+        for x in [7, 16, 25]:
+            vertic_b.append(sudoku_table[x])
+        for x in [8, 17, 26]:
+            vertic_c.append(sudoku_table[x])
+        for x in [33, 34, 35, 42, 43, 44]:
+            box_4_1.append(sudoku_table[x])
+        box_4_1 = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(box_4_1)
+        for x in [45, 46, 47, 48, 49, 50, 51, 52]:
+            box_4_2.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in box_4_2]
+        random.shuffle(last_value)
+        for x in [8, 17, 26]:
+            vertic.append(sudoku_table[x])
+
+        if last_value[0] not in vertic:
+            sudoku_table[a] = last_value[0]
+        else:
+            pass
+
+        routes = 0
+        looping = True
+        horizontals = []
+        counting = 0
+        for x in [45, 46, 47, 48, 49, 50, 51, 52, 53]:
+            horizontals.append(sudoku_table[x])
+        for x in horizontals:
+            if x == 0:
+                routes += 1
+
+        if routes > 0:
+
+            while looping == True:
+                variables = [], [], [], [], [], [], [], [], []
+                hor_ve0, hor_ve1, hor_ve2, hor_ve3, hor_ve4, hor_ve5, hor_ve6, hor_ve7, hor_ve8 = variables
+                for x in [0, 9, 18, 27, 28, 29, 36, 37, 38]:
+                    hor_ve0.append(sudoku_table[x])
+                for x in [1, 10, 19, 27, 28, 29, 36, 37, 38]:
+                    hor_ve1.append(sudoku_table[x])
+                for x in [2, 11, 20, 27, 28, 29, 36, 37, 38]:
+                    hor_ve2.append(sudoku_table[x])
+                for x in [3, 12, 21, 30, 31, 32, 39, 40, 41]:
+                    hor_ve3.append(sudoku_table[x])
+                for x in [4, 13, 22, 30, 31, 32, 39, 40, 41]:
+                    hor_ve4.append(sudoku_table[x])
+                for x in [5, 14, 23, 30, 31, 32, 39, 40, 41]:
+                    hor_ve5.append(sudoku_table[x])
+                for x in [6, 15, 24, 33, 34, 35, 42, 43, 44]:
+                    hor_ve6.append(sudoku_table[x])
+                for x in [7, 16, 25, 33, 34, 35, 42, 43, 44]:
+                    hor_ve7.append(sudoku_table[x])
+                for x in [8, 17, 26, 33, 34, 35, 42, 43, 44]:
+                    hor_ve8.append(sudoku_table[x])
+
+                columns = []
+                correct = 0
+                value = 45
+                sudoku_correct = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+                num_picks = []
+                num_picks = [x for x in range(1, 10)]
+                random.shuffle(num_picks)
+                loops = 0
+
+                count = 0
+                while count < 9:
+                    if count == 0:
+                        # if num_picks[0] not in hor_ve0:
+                        for x in num_picks:
+                            if x not in hor_ve0:
+                                if sudoku_correct[0] == 0:
+                                    sudoku_correct[0] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 1:
+                        hor_ve1.append(sudoku_correct[-1])
+                        hor_ve1 = list(dict.fromkeys(hor_ve1))
+                        for x in num_picks:
+                            if x not in hor_ve1:
+                                if sudoku_correct[1] == 0:
+                                    sudoku_correct[1] = x
+                                    num_picks.remove(x)
+
+                        count += 1
+                    if count == 2:
+                        hor_ve2.append(sudoku_correct[-2])
+                        hor_ve2 = list(dict.fromkeys(hor_ve2))
+                        for x in num_picks:
+                            if x not in hor_ve2:
+                                if sudoku_correct[2] == 0:
+                                    sudoku_correct[2] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 3:
+                        hor_ve3.append(sudoku_correct[-3])
+                        hor_ve3 = list(dict.fromkeys(hor_ve3))
+                        for x in num_picks:
+                            if x not in hor_ve3:
+                                if sudoku_correct[3] == 0:
+                                    sudoku_correct[3] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 4:
+                        hor_ve4.append(sudoku_correct[-4])
+                        hor_ve4 = list(dict.fromkeys(hor_ve4))
+                        for x in num_picks:
+                            if x not in hor_ve4:
+                                if sudoku_correct[4] == 0:
+                                    sudoku_correct[4] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 5:
+                        hor_ve5.append(sudoku_correct[-5])
+                        hor_ve5 = list(dict.fromkeys(hor_ve5))
+                        for x in num_picks:
+                            if x not in hor_ve5:
+                                if sudoku_correct[5] == 0:
+                                    sudoku_correct[5] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 6:
+                        hor_ve6.append(sudoku_correct[-6])
+                        hor_ve6 = list(dict.fromkeys(hor_ve6))
+                        for x in num_picks:
+                            if x not in hor_ve6:
+                                if sudoku_correct[6] == 0:
+                                    sudoku_correct[6] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 7:
+                        hor_ve7.append(sudoku_correct[-7])
+                        hor_ve7 = list(dict.fromkeys(hor_ve7))
+                        for x in num_picks:
+                            if x not in hor_ve7:
+                                if sudoku_correct[7] == 0:
+                                    sudoku_correct[7] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 8:
+                        hor_ve8.append(sudoku_correct[-8])
+                        hor_ve8 = list(dict.fromkeys(hor_ve8))
+                        for x in num_picks:
+                            if x not in hor_ve8:
+                                if sudoku_correct[8] == 0:
+                                    sudoku_correct[8] = x
+                                    num_picks.remove(x)
+                        count += 1
+
+                if count == 9:
+                    for x in sudoku_correct:
+                        if x != 0:
+                            pass
+                        else:
+                            correct += 1
+                counting += 1
+
+                if correct == 0:
+
+                    sudoku_table[45] = sudoku_correct[0]
+                    sudoku_table[46] = sudoku_correct[1]
+                    sudoku_table[47] = sudoku_correct[2]
+                    sudoku_table[48] = sudoku_correct[3]
+                    sudoku_table[49] = sudoku_correct[4]
+                    sudoku_table[50] = sudoku_correct[5]
+                    sudoku_table[51] = sudoku_correct[6]
+                    sudoku_table[52] = sudoku_correct[7]
+                    sudoku_table[53] = sudoku_correct[8]
+                    break
+                    looping == False
+                else:
+                    pass
+                if counting == 50:
+                    break
+                    looping = False
+
+        for x in [45, 46, 47, 48, 49, 50, 51, 52, 53]:
+            horizontal.append(sudoku_table[x])
+
+
+def row_seven(sudoku_table):
+    num_pick = [x for x in range(1, 10)]
+    variables = [], [], [], []
+    last_value, box_4_3, box_4_2, box_4_1 = variables
+    variables1 = [], [], [], [], [], [], [], [], []
+    hor_ver0, hor_ver1, hor_ver2, hor_ver3, hor_ver4, hor_ver5, hor_ver6, hor_ver7, hor_ver8 = variables1
+
+    if a in [54]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+        for x in [0, 9, 18, 27, 36, 45]:
+            vertic.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in vertic]
+        random.shuffle(last_value)
+        sudoku_table[a] = last_value[0]
+        for x in [54]:
+            horizontal.append(sudoku_table[x])
+    if a in [55]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+        for x in [1, 10, 19, 28, 37, 46, 54]:
+            vertic.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in vertic]
+        random.shuffle(last_value)
+        sudoku_table[a] = last_value[0]
+        for x in [54, 55]:
+            horizontal.append(sudoku_table[x])
+
+    if a in [56]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+        for x in [2, 11, 20, 29, 38, 47, 54, 55]:
+            vertic.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in vertic]
+        random.shuffle(last_value)
+        sudoku_table[a] = last_value[0]
+
+        for x in [54, 55, 56]:
+            horizontal.append(sudoku_table[x])
+
+    if a in [57]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+        for x in [3, 12, 21, 30, 39, 48]:
+            vertic.append(sudoku_table[x])
+        for x in [54, 55, 56]:
+            box_4_1.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        if last_value[0] not in vertic:
+            sudoku_table[a] = last_value[0]
+        elif last_value[1] not in vertic:
+            sudoku_table[a] = last_value[1]
+        elif last_value[2] not in vertic:
+            sudoku_table[a] = last_value[2]
+        elif last_value[3] not in vertic:
+            sudoku_table[a] = last_value[3]
+        elif last_value[4] not in vertic:
+            sudoku_table[a] = last_value[4]
+        elif last_value[5] not in vertic:
+            sudoku_table[a] = last_value[5]
+        else:
+            pass
+        for x in [54, 55, 56, 57]:
+            horizontal.append(sudoku_table[x])
+
+    if a in [58]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+        for x in [54, 55, 56, 57]:
+            vertic.append(sudoku_table[x])
+        for x in [0, 9, 18, 27, 36, 45]:
+            hor_ver4.append(sudoku_table[x])
+        for x in [1, 10, 19, 28, 37, 46]:
+            hor_ver3.append(sudoku_table[x])
+        for x in [2, 11, 20, 29, 38, 47]:
+            hor_ver2.append(sudoku_table[x])
+        for x in [3, 12, 21, 30, 39, 48]:
+            hor_ver1.append(sudoku_table[x])
+        for x in [4, 13, 22, 31, 40, 49]:
+            hor_ver0.append(sudoku_table[x])
+        for x in [54, 55, 56, 57]:
+            box_4_1.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        if last_value[0] not in hor_ver0:
+            sudoku_table[a] = last_value[0]
+        elif last_value[1] not in hor_ver0:
+            sudoku_table[a] = last_value[1]
+        elif last_value[2] not in hor_ver0:
+            sudoku_table[a] = last_value[2]
+        elif last_value[3] not in hor_ver0:
+            sudoku_table[a] = last_value[3]
+        elif last_value[4] not in hor_ver0:
+            sudoku_table[a] = last_value[4]
+        else:
+            pass
+
+        for x in [54, 55, 56, 57, 58]:
+            horizontal.append(sudoku_table[x])
+
+    if a in [59]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+        for x in [54, 55, 56, 57, 58]:
+            vertic.append(sudoku_table[x])
+        for x in [0, 9, 18, 27, 36, 45]:
+            hor_ver4.append(sudoku_table[x])
+        for x in [1, 10, 19, 28, 37, 46]:
+            hor_ver3.append(sudoku_table[x])
+        for x in [2, 11, 20, 29, 38, 47]:
+            hor_ver2.append(sudoku_table[x])
+        for x in [3, 12, 21, 30, 39, 48]:
+            hor_ver1.append(sudoku_table[x])
+        for x in [4, 13, 22, 31, 40, 49]:
+            hor_ver0.append(sudoku_table[x])
+        for x in [5, 14, 23, 32, 41, 50]:
+            hor_ver5.append(sudoku_table[x])
+        for x in [54, 55, 56, 57, 58]:
+            box_4_1.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        if last_value[0] not in hor_ver5:
+            sudoku_table[a] = last_value[0]
+        elif last_value[1] not in hor_ver5:
+            sudoku_table[a] = last_value[1]
+        elif last_value[2] not in hor_ver5:
+            sudoku_table[a] = last_value[2]
+        elif last_value[3] not in hor_ver5:
+            sudoku_table[a] = last_value[3]
+        else:
+            pass
+
+        for x in [54, 55, 56, 57, 58, 59]:
+            horizontal.append(sudoku_table[x])
+
+    if a in [60]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+        for x in [54, 55, 56, 57, 58, 59]:
+            vertic.append(sudoku_table[x])
+        for x in [0, 9, 18, 27, 36, 45]:
+            hor_ver0.append(sudoku_table[x])
+        for x in [1, 10, 19, 28, 37, 46]:
+            hor_ver1.append(sudoku_table[x])
+        for x in [2, 11, 20, 29, 38, 47]:
+            hor_ver2.append(sudoku_table[x])
+        for x in [3, 12, 21, 30, 39, 48]:
+            hor_ver3.append(sudoku_table[x])
+        for x in [4, 13, 22, 31, 40, 49]:
+            hor_ver4.append(sudoku_table[x])
+        for x in [5, 14, 23, 32, 41, 50]:
+            hor_ver5.append(sudoku_table[x])
+        for x in [6, 15, 24, 33, 42, 51]:
+            hor_ver6.append(sudoku_table[x])
+        for x in [54, 55, 56, 57, 58, 59]:
+            box_4_1.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        if last_value[0] not in hor_ver6:
+            sudoku_table[a] = last_value[0]
+        elif last_value[1] not in hor_ver6:
+            sudoku_table[a] = last_value[1]
+        elif last_value[2] not in hor_ver6:
+            sudoku_table[a] = last_value[2]
+        else:
+            pass
+
+        for x in [54, 55, 56, 57, 58, 59, 60]:
+            horizontal.append(sudoku_table[x])
+
+    if a in [61]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+        for x in [54, 55, 56, 57, 58, 59, 60]:
+            vertic.append(sudoku_table[x])
+        for x in [0, 9, 18, 27, 36, 45]:
+            hor_ver0.append(sudoku_table[x])
+        for x in [1, 10, 19, 28, 37, 46]:
+            hor_ver1.append(sudoku_table[x])
+        for x in [2, 11, 20, 29, 38, 47]:
+            hor_ver2.append(sudoku_table[x])
+        for x in [3, 12, 21, 30, 39, 48]:
+            hor_ver3.append(sudoku_table[x])
+        for x in [4, 13, 22, 31, 40, 49]:
+            hor_ver4.append(sudoku_table[x])
+        for x in [5, 14, 23, 32, 41, 50]:
+            hor_ver5.append(sudoku_table[x])
+        for x in [6, 15, 24, 33, 42, 51]:
+            hor_ver6.append(sudoku_table[x])
+        for x in [7, 16, 25, 34, 43, 52]:
+            hor_ver7.append(sudoku_table[x])
+        for x in [54, 55, 56, 57, 58, 59, 60]:
+            box_4_1.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        if last_value[0] not in hor_ver7:
+            sudoku_table[a] = last_value[0]
+        elif last_value[1] not in hor_ver7:
+            sudoku_table[a] = last_value[1]
+        else:
+            pass
+
+        for x in [54, 55, 56, 57, 58, 59, 60, 61]:
+            horizontal.append(sudoku_table[x])
+
+    if a in [62]:
+        counting = 0
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        temp_seduko = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+        for x in [6, 15, 24, 33, 42, 51]:
+            vertic_a.append(sudoku_table[x])
+        for x in [7, 16, 25, 34, 43, 52]:
+            vertic_b.append(sudoku_table[x])
+        for x in [8, 17, 26, 35, 44, 53]:
+            vertic_c.append(sudoku_table[x])
+        for x in [54, 55, 56, 57, 58, 59]:
+            box_4_1.append(sudoku_table[x])
+        box_4_1 = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(box_4_1)
+        for x in [54, 55, 56, 57, 58, 59, 60, 61]:
+            vertic.append(sudoku_table[x])
+        for x in [0, 9, 18, 27, 36, 45]:
+            hor_ver0.append(sudoku_table[x])
+        for x in [1, 10, 19, 28, 37, 46]:
+            hor_ver1.append(sudoku_table[x])
+        for x in [2, 11, 20, 29, 38, 47]:
+            hor_ver2.append(sudoku_table[x])
+        for x in [3, 12, 21, 30, 39, 48]:
+            hor_ver3.append(sudoku_table[x])
+        for x in [4, 13, 22, 31, 40, 49]:
+            hor_ver4.append(sudoku_table[x])
+        for x in [5, 14, 23, 32, 41, 50]:
+            hor_ver5.append(sudoku_table[x])
+        for x in [6, 15, 24, 33, 42, 51]:
+            hor_ver6.append(sudoku_table[x])
+        for x in [7, 16, 25, 34, 43, 52]:
+            hor_ver7.append(sudoku_table[x])
+        for x in [8, 17, 26, 35, 44, 53]:
+            hor_ver8.append(sudoku_table[x])
+        for x in [54, 55, 56, 57, 58, 59, 60, 61]:
+            box_4_2.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in box_4_2]
+        random.shuffle(last_value)
+        if last_value[0] not in hor_ver8:
+            sudoku_table[a] = last_value[0]
+        else:
+            pass
+
+        routes = 0
+        looping = True
+        horizontals = []
+        for x in [54, 55, 56, 57, 58, 59, 60, 61, 62]:
+            horizontals.append(sudoku_table[x])
+        for x in horizontals:
+            if x == 0:
+                routes += 1
+
+        if routes > 0:
+            while looping == True:
+                variables = [], [], [], [], [], [], [], [], []
+                hor_ve0, hor_ve1, hor_ve2, hor_ve3, hor_ve4, hor_ve5, hor_ve6, hor_ve7, hor_ve8 = variables
+                for x in [0, 9, 18, 27, 36, 45]:
+                    hor_ver0.append(sudoku_table[x])
+                    hor_ve0.append(sudoku_table[x])
+                for x in [1, 10, 19, 28, 37, 46]:
+                    hor_ver1.append(sudoku_table[x])
+                    hor_ve1.append(sudoku_table[x])
+                for x in [2, 11, 20, 29, 38, 47]:
+                    hor_ver2.append(sudoku_table[x])
+                    hor_ve2.append(sudoku_table[x])
+                for x in [3, 12, 21, 30, 39, 48]:
+                    hor_ver3.append(sudoku_table[x])
+                    hor_ve3.append(sudoku_table[x])
+                for x in [4, 13, 22, 31, 40, 49]:
+                    hor_ver4.append(sudoku_table[x])
+                    hor_ve4.append(sudoku_table[x])
+                for x in [5, 14, 23, 32, 41, 50]:
+                    hor_ver5.append(sudoku_table[x])
+                    hor_ve5.append(sudoku_table[x])
+                for x in [6, 15, 24, 33, 42, 51]:
+                    hor_ver6.append(sudoku_table[x])
+                    hor_ve6.append(sudoku_table[x])
+                for x in [7, 16, 25, 34, 43, 52]:
+                    hor_ver7.append(sudoku_table[x])
+                    hor_ve7.append(sudoku_table[x])
+                for x in [8, 17, 26, 35, 44, 53]:
+                    hor_ver8.append(sudoku_table[x])
+                    hor_ve8.append(sudoku_table[x])
+
+                columns = []
+                correct = 0
+                value = 54
+                sudoku_correct = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+                num_picks = []
+                num_picks = [x for x in range(1, 10)]
+                random.shuffle(num_picks)
+                loops = 0
+
+                count = 0
+                while count < 9:
+                    if count == 0:
+                        # if num_picks[0] not in hor_ve0:
+                        for x in num_picks:
+                            if x not in hor_ve0:
+                                if sudoku_correct[0] == 0:
+                                    sudoku_correct[0] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 1:
+                        hor_ve1.append(sudoku_correct[-1])
+                        hor_ve1 = list(dict.fromkeys(hor_ve1))
+                        for x in num_picks:
+                            if x not in hor_ve1:
+                                if sudoku_correct[1] == 0:
+                                    sudoku_correct[1] = x
+                                    num_picks.remove(x)
+
+                        count += 1
+                    if count == 2:
+                        hor_ve2.append(sudoku_correct[-2])
+                        hor_ve2 = list(dict.fromkeys(hor_ve2))
+                        for x in num_picks:
+                            if x not in hor_ve2:
+                                if sudoku_correct[2] == 0:
+                                    sudoku_correct[2] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 3:
+                        hor_ve3.append(sudoku_correct[-3])
+                        hor_ve3 = list(dict.fromkeys(hor_ve3))
+                        for x in num_picks:
+                            if x not in hor_ve3:
+                                if sudoku_correct[3] == 0:
+                                    sudoku_correct[3] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 4:
+                        hor_ve4.append(sudoku_correct[-4])
+                        hor_ve4 = list(dict.fromkeys(hor_ve4))
+                        for x in num_picks:
+                            if x not in hor_ve4:
+                                if sudoku_correct[4] == 0:
+                                    sudoku_correct[4] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 5:
+                        hor_ve5.append(sudoku_correct[-5])
+                        hor_ve5 = list(dict.fromkeys(hor_ve5))
+                        for x in num_picks:
+                            if x not in hor_ve5:
+                                if sudoku_correct[5] == 0:
+                                    sudoku_correct[5] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 6:
+                        hor_ve6.append(sudoku_correct[-6])
+                        hor_ve6 = list(dict.fromkeys(hor_ve6))
+                        for x in num_picks:
+                            if x not in hor_ve6:
+                                if sudoku_correct[6] == 0:
+                                    sudoku_correct[6] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 7:
+                        hor_ve7.append(sudoku_correct[-7])
+                        hor_ve7 = list(dict.fromkeys(hor_ve7))
+                        for x in num_picks:
+                            if x not in hor_ve7:
+                                if sudoku_correct[7] == 0:
+                                    sudoku_correct[7] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 8:
+                        hor_ve8.append(sudoku_correct[-8])
+                        hor_ve8 = list(dict.fromkeys(hor_ve8))
+                        for x in num_picks:
+                            if x not in hor_ve8:
+                                if sudoku_correct[8] == 0:
+                                    sudoku_correct[8] = x
+                                    num_picks.remove(x)
+                        count += 1
+                if count == 9:
+                    for x in sudoku_correct:
+                        if x != 0:
+                            pass
+                        else:
+                            correct += 1
+                counting += 1
+                if correct == 0:
+
+                    sudoku_table[54] = sudoku_correct[0]
+                    sudoku_table[55] = sudoku_correct[1]
+                    sudoku_table[56] = sudoku_correct[2]
+                    sudoku_table[57] = sudoku_correct[3]
+                    sudoku_table[58] = sudoku_correct[4]
+                    sudoku_table[59] = sudoku_correct[5]
+                    sudoku_table[60] = sudoku_correct[6]
+                    sudoku_table[61] = sudoku_correct[7]
+                    sudoku_table[62] = sudoku_correct[8]
+                    break
+                    looping == False
+                else:
+                    pass
+                if counting == 50:
+                    break
+                    looping = False
+
+        for x in [54, 55, 56, 57, 58, 59, 60, 61, 62]:
+            horizontal.append(sudoku_table[x])
+
+
+def row_eight(sudoku_table):
+    num_pick = [x for x in range(1, 10)]
+    variables = [], [], [], []
+    last_value, box_4_3, box_4_2, box_4_1 = variables
+    variables1 = [], [], [], [], [], [], [], [], []
+    hor_ver0, hor_ver1, hor_ver2, hor_ver3, hor_ver4, hor_ver5, hor_ver6, hor_ver7, hor_ver8 = variables1
+    if a in [63]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+        for x in [54, 55, 56]:
+            box_4_2.append(sudoku_table[x])
+        for x in [0, 9, 18, 27, 36, 45]:
+            vertic.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in vertic]
+        random.shuffle(last_value)
+        if last_value[0] not in box_4_2:
+            sudoku_table[a] = last_value[0]
+        elif last_value[1] not in box_4_2:
+            sudoku_table[a] = last_value[1]
+        elif last_value[2] not in box_4_2:
+            sudoku_table[a] = last_value[2]
+        else:
+            pass
+
+        for x in [63]:
+            horizontal.append(sudoku_table[x])
+
+    if a in [64]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+        for x in [54, 55, 56, 63]:
+            box_4_2.append(sudoku_table[x])
+        for x in [1, 10, 19, 28, 37, 46]:
+            vertic.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in vertic]
+        random.shuffle(last_value)
+        if last_value[0] not in box_4_2:
+            sudoku_table[a] = last_value[0]
+        elif last_value[1] not in box_4_2:
+            sudoku_table[a] = last_value[1]
+        elif last_value[2] not in box_4_2:
+            sudoku_table[a] = last_value[2]
+        else:
+            pass
+        for x in [63, 64]:
+            horizontal.append(sudoku_table[x])
+
+    if a in [65]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+        for x in [54, 55, 56, 63, 64]:
+            box_4_2.append(sudoku_table[x])
+        for x in [2, 11, 20, 29, 38, 47]:
+            vertic.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in vertic]
+        random.shuffle(last_value)
+        if last_value[0] not in box_4_2:
+            sudoku_table[a] = last_value[0]
+        elif last_value[1] not in box_4_2:
+            sudoku_table[a] = last_value[1]
+        elif last_value[2] not in box_4_2:
+            sudoku_table[a] = last_value[2]
+        else:
+            pass
+
+        for x in [63, 64, 65]:
+            horizontal.append(sudoku_table[x])
+
+    if a in [66]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+        for x in [63, 64, 65]:
+            horizontal.append(sudoku_table[x])
+        for x in [3, 12, 21, 30, 39, 48, 57, 58, 59]:
+            vertic.append(sudoku_table[x])
+        vertic = list(dict.fromkeys(vertic))
+        last_value = [x for x in num_pick if x not in horizontal]
+        random.shuffle(last_value)
+        if last_value[0] not in vertic:
+            sudoku_table[a] = last_value[0]
+        elif last_value[1] not in vertic:
+            sudoku_table[a] = last_value[1]
+        elif last_value[2] not in vertic:
+            sudoku_table[a] = last_value[2]
+        elif last_value[3] not in vertic:
+            sudoku_table[a] = last_value[3]
+        elif last_value[4] not in vertic:
+            sudoku_table[a] = last_value[4]
+        elif last_value[5] not in vertic:
+            sudoku_table[a] = last_value[5]
+        else:
+            pass
+        horizontal = []
+        for x in [63, 64, 65, 66]:
+            horizontal.append(sudoku_table[x])
+
+    if a in [67]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+        for x in [63, 64, 65, 66]:
+            box_4_1.append(sudoku_table[x])
+        for x in [4, 13, 22, 31, 40, 49, 57, 58, 59, 66]:
+            vertic.append(sudoku_table[x])
+        vertic = list(dict.fromkeys(vertic))
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        if last_value[0] not in vertic:
+            sudoku_table[a] = last_value[0]
+        elif last_value[1] not in vertic:
+            sudoku_table[a] = last_value[1]
+        elif last_value[2] not in vertic:
+            sudoku_table[a] = last_value[2]
+        elif last_value[3] not in vertic:
+            sudoku_table[a] = last_value[3]
+        elif last_value[4] not in vertic:
+            sudoku_table[a] = last_value[4]
+        else:
+            pass
+        for x in [63, 64, 65, 66, 67]:
+            horizontal.append(sudoku_table[x])
+
+    if a in [68]:
+        horizontal = []
+        vertic = []
+        box_temp_row4 = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+        for x in [0, 9, 18, 27, 36, 45, 54, 55, 56, 63, 64, 65]:
+            hor_ver0.append(sudoku_table[x])
+        hor_ver0 = list(dict.fromkeys(hor_ver0))
+        for x in [1, 10, 19, 28, 37, 46, 54, 55, 56, 63, 64, 65]:
+            hor_ver1.append(sudoku_table[x])
+        hor_ver1 = list(dict.fromkeys(hor_ver1))
+        for x in [2, 11, 20, 29, 38, 47, 54, 55, 56, 63, 64, 65]:
+            hor_ver2.append(sudoku_table[x])
+        hor_ver2 = list(dict.fromkeys(hor_ver2))
+        for x in [3, 12, 21, 30, 39, 48, 57, 58, 59, 66, 67]:
+            hor_ver3.append(sudoku_table[x])
+        hor_ver3 = list(dict.fromkeys(hor_ver3))
+        for x in [4, 13, 22, 31, 40, 49, 57, 58, 59, 66, 67]:
+            hor_ver4.append(sudoku_table[x])
+        hor_ver4 = list(dict.fromkeys(hor_ver4))
+
+        for x in [5, 14, 23, 32, 41, 50, 57, 58, 59, 67]:
+            hor_ver5.append(sudoku_table[x])
+        hor_ver5 = list(dict.fromkeys(hor_ver5))
+
+        for x in [5, 14, 23, 32, 41, 50, 57, 58, 59, 66]:
+            hor_ver6.append(sudoku_table[x])
+        hor_ver6 = list(dict.fromkeys(hor_ver6))
+
+        for x in [63, 64, 65, 66, 67]:
+            box_4_1.append(sudoku_table[x])
+        for x in [5, 14, 23, 32, 41, 50, 57, 58, 59, 66, 67]:
+            vertic.append(sudoku_table[x])
+        vertic = list(dict.fromkeys(vertic))
+        vertic.sort()
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        if last_value[0] not in vertic:
+            sudoku_table[a] = last_value[0]
+        elif last_value[1] not in vertic:
+            sudoku_table[a] = last_value[1]
+        elif last_value[2] not in vertic:
+            sudoku_table[a] = last_value[2]
+        elif last_value[3] not in vertic:
+            sudoku_table[a] = last_value[3]
+
+        else:
+            pass
+        for x in [63, 64, 65, 66, 67, 68]:
+            horizontal.append(sudoku_table[x])
+
+    if a in [69]:
+        horizontal1 = []
+        horizontal = []
+        vertic = []
+        vertic1 = []
+        box_temp_row4 = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+        for x in [0, 9, 18, 27, 36, 45, 54, 55, 56, 63, 64, 65]:
+            hor_ver0.append(sudoku_table[x])
+        hor_ver0 = list(dict.fromkeys(hor_ver0))
+        for x in [1, 10, 19, 28, 37, 46, 54, 55, 56, 63, 64, 65]:
+            hor_ver1.append(sudoku_table[x])
+        hor_ver1 = list(dict.fromkeys(hor_ver1))
+        for x in [2, 11, 20, 29, 38, 47, 54, 55, 56, 63, 64, 65]:
+            hor_ver2.append(sudoku_table[x])
+        hor_ver2 = list(dict.fromkeys(hor_ver2))
+        for x in [3, 12, 21, 30, 39, 48, 57, 58, 59, 66, 67, 68]:
+            hor_ver3.append(sudoku_table[x])
+        hor_ver3 = list(dict.fromkeys(hor_ver3))
+        for x in [4, 13, 22, 31, 40, 49, 57, 58, 59, 66, 67, 68]:
+            hor_ver4.append(sudoku_table[x])
+        hor_ver4 = list(dict.fromkeys(hor_ver4))
+        for x in [5, 14, 23, 32, 41, 50, 57, 58, 59, 66, 67, 68]:
+            hor_ver5.append(sudoku_table[x])
+        hor_ver5 = list(dict.fromkeys(hor_ver5))
+        for x in [63, 64, 65, 66, 67, 68]:
+            box_4_1.append(sudoku_table[x])
+        for x in [6, 15, 24, 33, 42, 51, 60, 61, 62]:
+            vertic.append(sudoku_table[x])
+        vertic = list(dict.fromkeys(vertic))
+        vertic.sort()
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        if last_value[0] not in vertic:
+            sudoku_table[a] = last_value[0]
+        elif last_value[1] not in vertic:
+            sudoku_table[a] = last_value[1]
+        elif last_value[2] not in vertic:
+            sudoku_table[a] = last_value[2]
+
+        for x in [63, 64, 65, 66, 67, 68, 69]:
+            horizontal.append(sudoku_table[x])
+
+    if a in [70]:
+        horizontal1 = []
+        horizontal = []
+        vertic = []
+        vertic1 = []
+        box_temp_row4 = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+
+        for x in [0, 9, 18, 27, 36, 45, 54, 55, 56, 63, 64, 65]:
+            hor_ver0.append(sudoku_table[x])
+        hor_ver0 = list(dict.fromkeys(hor_ver0))
+        for x in [1, 10, 19, 28, 37, 46, 54, 55, 56, 63, 64, 65]:
+            hor_ver1.append(sudoku_table[x])
+        hor_ver1 = list(dict.fromkeys(hor_ver1))
+        for x in [2, 11, 20, 29, 38, 47, 54, 55, 56, 63, 64, 65]:
+            hor_ver2.append(sudoku_table[x])
+        hor_ver2 = list(dict.fromkeys(hor_ver2))
+        for x in [3, 12, 21, 30, 39, 48, 57, 58, 59, 66, 67, 68]:
+            hor_ver3.append(sudoku_table[x])
+        hor_ver3 = list(dict.fromkeys(hor_ver3))
+        for x in [4, 13, 22, 31, 40, 49, 57, 58, 59, 66, 67, 68]:
+            hor_ver4.append(sudoku_table[x])
+        hor_ver4 = list(dict.fromkeys(hor_ver4))
+        for x in [5, 14, 23, 32, 41, 50, 57, 58, 59, 66, 67, 68]:
+            hor_ver5.append(sudoku_table[x])
+        hor_ver5 = list(dict.fromkeys(hor_ver5))
+
+        for x in [6, 15, 24, 33, 42, 51, 60, 61, 62, 68]:
+            hor_ver6.append(sudoku_table[x])
+        hor_ver6 = list(dict.fromkeys(hor_ver6))
+        for x in [6, 15, 24, 33, 42, 51, 60, 61, 62]:
+            hor_ver7.append(sudoku_table[x])
+        hor_ver7 = list(dict.fromkeys(hor_ver7))
+
+        for x in [63, 64, 65, 66, 67, 68, 69]:
+            box_4_1.append(sudoku_table[x])
+
+        for x in [7, 16, 25, 34, 43, 52, 60, 61, 62]:
+            vertic.append(sudoku_table[x])
+        vertic = list(dict.fromkeys(vertic))
+        vertic.sort()
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        if last_value[0] not in vertic:
+            sudoku_table[a] = last_value[0]
+        elif last_value[1] not in vertic:
+            sudoku_table[a] = last_value[1]
+
+        else:
+            pass
+
+        for x in [63, 64, 65, 66, 67, 68, 69, 70]:
+            horizontal.append(sudoku_table[x])
+
+    if a in [71]:
+        counting = 0
+        horizontal1 = []
+        horizontal = []
+        vertic = []
+        vertic1 = []
+        vertic2 = []
+        box_temp_row4 = []
+        vertic_a = []
+        vertic_b = []
+        vertic_c = []
+        temp_seduko = []
+
+        for x in [0, 9, 18, 27, 36, 45, 54, 55, 56, 63, 64, 65]:
+            hor_ver0.append(sudoku_table[x])
+        hor_ver0 = list(dict.fromkeys(hor_ver0))
+
+        for x in [1, 10, 19, 28, 37, 46, 54, 55, 56, 63, 64, 65]:
+            hor_ver1.append(sudoku_table[x])
+        hor_ver1 = list(dict.fromkeys(hor_ver1))
+
+        for x in [2, 11, 20, 29, 38, 47, 54, 55, 56, 63, 64, 65]:
+            hor_ver2.append(sudoku_table[x])
+        hor_ver2 = list(dict.fromkeys(hor_ver2))
+
+        for x in [3, 12, 21, 30, 39, 48, 57, 58, 59, 66, 67, 68]:
+            hor_ver3.append(sudoku_table[x])
+        hor_ver3 = list(dict.fromkeys(hor_ver3))
+
+        for x in [4, 13, 22, 31, 40, 49, 57, 58, 59, 66, 67, 68]:
+            hor_ver4.append(sudoku_table[x])
+        hor_ver4 = list(dict.fromkeys(hor_ver4))
+
+        for x in [5, 14, 23, 32, 41, 50, 57, 58, 59, 66, 67, 68]:
+            hor_ver5.append(sudoku_table[x])
+        hor_ver5 = list(dict.fromkeys(hor_ver5))
+
+        for x in [6, 15, 24, 33, 42, 51, 60, 61, 62, 69, 70]:
+            hor_ver6.append(sudoku_table[x])
+        hor_ver6 = list(dict.fromkeys(hor_ver6))
+
+        for x in [7, 16, 25, 34, 43, 52, 60, 61, 62, 69, 70]:
+            hor_ver7.append(sudoku_table[x])
+        hor_ver7 = list(dict.fromkeys(hor_ver7))
+
+        for x in [8, 17, 26, 35, 44, 53, 60, 61, 62, 70]:
+            vertic1.append(sudoku_table[x])
+        vertic1 = list(dict.fromkeys(vertic1))
+        for x in [8, 17, 26, 35, 44, 53, 60, 61, 62, 69]:
+            vertic2.append(sudoku_table[x])
+        vertic2 = list(dict.fromkeys(vertic2))
+
+        for x in [63, 64, 65, 66, 67, 68, 69, 70]:
+            box_4_1.append(sudoku_table[x])
+
+        for x in [8, 17, 26, 35, 44, 53, 60, 61, 62, 69, 70]:
+            vertic.append(sudoku_table[x])
+        vertic = list(dict.fromkeys(vertic))
+        vertic.sort()
+        last_value = [x for x in num_pick if x not in box_4_1]
+        random.shuffle(last_value)
+        if last_value[0] not in vertic:
+            sudoku_table[a] = last_value[0]
+        else:
+            pass
+
+        routes = 0
+        looping = True
+        horizontals = []
+        for x in [63, 64, 65, 66, 67, 68, 69, 70, 71]:
+            horizontals.append(sudoku_table[x])
+        for x in horizontals:
+            if x == 0:
+                routes += 1
+
+        if routes > 0:
+            # print("no.62corrrrrettttttttttttttttt")
+            while looping == True:
+                variables = [], [], [], [], [], [], [], [], [], []
+                hor_v0, hor_v1, hor_v2, hor_v3, hor_v4, hor_v5, hor_v6, hor_v7, hor_v8, box1 = variables
+                for x in [0, 9, 18, 27, 36, 45, 54, 55, 56]:
+                    hor_v0.append(sudoku_table[x])
+                hor_v0 = list(dict.fromkeys(hor_v0))
+                for x in [1, 10, 19, 28, 37, 46, 54, 55, 56]:
+                    hor_v1.append(sudoku_table[x])
+                    hor_v1 = list(dict.fromkeys(hor_v1))
+                for x in [2, 11, 20, 29, 38, 47, 54, 55, 56]:
+                    hor_v2.append(sudoku_table[x])
+                    hor_v2 = list(dict.fromkeys(hor_v2))
+                for x in [3, 12, 21, 30, 39, 48, 57, 58, 59]:
+                    hor_v3.append(sudoku_table[x])
+                    hor_v3 = list(dict.fromkeys(hor_v3))
+                for x in [4, 13, 22, 31, 40, 49, 57, 58, 59]:
+                    hor_v4.append(sudoku_table[x])
+                    hor_v4 = list(dict.fromkeys(hor_v4))
+                for x in [5, 14, 23, 32, 41, 50, 57, 58, 59]:
+                    hor_v5.append(sudoku_table[x])
+                    hor_v5 = list(dict.fromkeys(hor_v5))
+                for x in [6, 15, 24, 33, 42, 51, 60, 61, 62]:
+                    hor_v6.append(sudoku_table[x])
+                    hor_v6 = list(dict.fromkeys(hor_v6))
+                for x in [7, 16, 25, 34, 43, 52, 60, 61, 62]:
+                    hor_v7.append(sudoku_table[x])
+                    hor_v7 = list(dict.fromkeys(hor_v7))
+                for x in [8, 17, 26, 35, 44, 53, 60, 61, 62]:
+                    hor_v8.append(sudoku_table[x])
+                    hor_v8 = list(dict.fromkeys(hor_v8))
+
+                columns = []
+                correct = 0
+                value = 63
+                sudoku_correct = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+                num_picks = []
+                num_picks = [x for x in range(1, 10)]
+                random.shuffle(num_picks)
+                loops = 0
+                # print("num_picks ",num_picks)
+                count = 0
+                while count < 9:
+                    if count == 0:
+                        for x in num_picks:
+                            if x not in hor_v0:
+                                if sudoku_correct[0] == 0:
+                                    sudoku_correct[0] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 1:
+                        hor_v1.append(sudoku_correct[-1])
+                        hor_v1 = list(dict.fromkeys(hor_v1))
+                        for x in num_picks:
+                            if x not in hor_v1:
+                                if sudoku_correct[1] == 0:
+                                    sudoku_correct[1] = x
+                                    num_picks.remove(x)
+
+                        count += 1
+                    if count == 2:
+                        hor_v2.append(sudoku_correct[-2])
+                        hor_v2 = list(dict.fromkeys(hor_v2))
+                        for x in num_picks:
+                            if x not in hor_v2:
+                                if sudoku_correct[2] == 0:
+                                    sudoku_correct[2] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 3:
+                        hor_v3.append(sudoku_correct[-3])
+                        hor_v3 = list(dict.fromkeys(hor_v3))
+                        for x in num_picks:
+                            if x not in hor_v3:
+                                if sudoku_correct[3] == 0:
+                                    sudoku_correct[3] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 4:
+                        hor_v4.append(sudoku_correct[-4])
+                        hor_v4 = list(dict.fromkeys(hor_v4))
+                        for x in num_picks:
+                            if x not in hor_v4:
+                                if sudoku_correct[4] == 0:
+                                    sudoku_correct[4] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 5:
+                        hor_v5.append(sudoku_correct[-5])
+                        hor_v5 = list(dict.fromkeys(hor_v5))
+                        for x in num_picks:
+                            if x not in hor_v5:
+                                if sudoku_correct[5] == 0:
+                                    sudoku_correct[5] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 6:
+                        hor_v6.append(sudoku_correct[-6])
+                        hor_v6 = list(dict.fromkeys(hor_v6))
+                        for x in num_picks:
+                            if x not in hor_v6:
+                                if sudoku_correct[6] == 0:
+                                    sudoku_correct[6] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 7:
+                        hor_v7.append(sudoku_correct[-7])
+                        hor_v7 = list(dict.fromkeys(hor_v7))
+                        for x in num_picks:
+                            if x not in hor_v7:
+                                if sudoku_correct[7] == 0:
+                                    sudoku_correct[7] = x
+                                    num_picks.remove(x)
+                        count += 1
+                    if count == 8:
+                        hor_v8.append(sudoku_correct[-8])
+                        hor_v8 = list(dict.fromkeys(hor_v8))
+                        for x in num_picks:
+                            if x not in hor_v8:
+                                if sudoku_correct[8] == 0:
+                                    sudoku_correct[8] = x
+                                    num_picks.remove(x)
+                        count += 1
+                if count == 9:
+                    for x in sudoku_correct:
+                        if x != 0:
+                            pass
+                        else:
+                            correct += 1
+                counting += 1
+
+                if correct == 0:
+                    sudoku_table[63] = sudoku_correct[0]
+                    sudoku_table[64] = sudoku_correct[1]
+                    sudoku_table[65] = sudoku_correct[2]
+                    sudoku_table[66] = sudoku_correct[3]
+                    sudoku_table[67] = sudoku_correct[4]
+                    sudoku_table[68] = sudoku_correct[5]
+                    sudoku_table[69] = sudoku_correct[6]
+                    sudoku_table[70] = sudoku_correct[7]
+                    sudoku_table[71] = sudoku_correct[8]
+                    break
+                    looping == False
+                else:
+                    pass
+                if counting == 50:
+                    break
+                    looping == False
+
+        for x in [63, 64, 65, 66, 67, 68, 69, 70, 71]:
+            horizontal.append(sudoku_table[x])
+
+
+def row_nine(sudoku_table):
+    num_pick = [x for x in range(1, 10)]
+    variables = [], [], [], []
+    last_value, box_4_3, box_4_2, box_4_1 = variables
+    variables1 = [], [], [], [], [], [], [], [], []
+    hor_ver0, hor_ver1, hor_ver2, hor_ver3, hor_ver4, hor_ver5, hor_ver6, hor_ver7, hor_ver8 = variables1
+    if a in [72]:
+        for x in [54, 55, 56, 63, 64, 65]:
+            box_4_2.append(sudoku_table[x])
+        for x in [0, 9, 18, 27, 36, 45, 54, 63]:
+            box_4_1.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in box_4_1]
+        if last_value[0] not in box_4_2:
+            sudoku_table[a] = last_value[0]
+        else:
+            pass
+    if a in [73]:
+        for x in [54, 55, 56, 63, 64, 65, 72]:
+            box_4_2.append(sudoku_table[x])
+        for x in [1, 10, 19, 28, 37, 46, 55, 64]:
+            box_4_1.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in box_4_1]
+        if last_value[0] not in box_4_2:
+            sudoku_table[a] = last_value[0]
+        else:
+            pass
+    if a in [74]:
+        for x in [54, 55, 56, 63, 64, 65, 72, 73]:
+            box_4_2.append(sudoku_table[x])
+        for x in [2, 11, 20, 29, 38, 47, 56, 65]:
+            box_4_1.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in box_4_1]
+        if last_value[0] not in box_4_2:
+            sudoku_table[a] = last_value[0]
+        else:
+            pass
+    if a in [75]:
+        for x in [57, 58, 59, 66, 67, 68]:
+            box_4_2.append(sudoku_table[x])
+        for x in [3, 12, 21, 30, 39, 48, 57, 66]:
+            box_4_1.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in box_4_1]
+        if last_value[0] not in box_4_2:
+            sudoku_table[a] = last_value[0]
+        else:
+            pass
+    if a in [76]:
+        for x in [57, 58, 59, 66, 67, 68, 75]:
+            box_4_2.append(sudoku_table[x])
+        for x in [4, 13, 22, 31, 40, 49, 58, 67]:
+            box_4_1.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in box_4_1]
+        if last_value[0] not in box_4_2:
+            sudoku_table[a] = last_value[0]
+        else:
+            pass
+    if a in [77]:
+        for x in [57, 58, 59, 66, 67, 68, 75, 76]:
+            box_4_2.append(sudoku_table[x])
+        for x in [5, 14, 23, 32, 41, 50, 59, 68]:
+            box_4_1.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in box_4_1]
+        if last_value[0] not in box_4_2:
+            sudoku_table[a] = last_value[0]
+        else:
+            pass
+    if a in [78]:
+        for x in [60, 61, 62, 69, 70, 71]:
+            box_4_2.append(sudoku_table[x])
+        for x in [6, 15, 24, 33, 42, 51, 60, 69]:
+            box_4_1.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in box_4_1]
+        if last_value[0] not in box_4_2:
+            sudoku_table[a] = last_value[0]
+        else:
+            pass
+    if a in [79]:
+        for x in [60, 61, 62, 69, 70, 71, 78]:
+            box_4_2.append(sudoku_table[x])
+        for x in [7, 16, 25, 34, 43, 52, 61, 70]:
+            box_4_1.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in box_4_1]
+        if last_value[0] not in box_4_2:
+            sudoku_table[a] = last_value[0]
+        else:
+            pass
+    if a in [80]:
+        for x in [60, 61, 62, 69, 70, 71, 78, 79]:
+            box_4_2.append(sudoku_table[x])
+        for x in [8, 17, 26, 35, 44, 53, 62, 71]:
+            box_4_1.append(sudoku_table[x])
+        last_value = [x for x in num_pick if x not in box_4_1]
+        if last_value[0] not in box_4_2:
+            sudoku_table[a] = last_value[0]
+        else:
+            pass
+
+
+correct = 0
+error = 0
+
+enter = input("enter any key")
+while rotate <= rotation:
+    pick = True
+    select_num = True
+    sudoku_game = True
+    variables = []
+    for x in range(11):
+        variables.append([])
+    sudoku_num, sudoku_num1, sudoku_num2, sum_box, sudoku_table, select, sudoku1, sudoku, select_list, column1_row1, column2_row2 = variables
+
+    for i in range(1, 10):
+        sudoku_num.append(i)
+        column1_row1.append(i)
+        column2_row2.append(i)
+        select_list.append(i)
+        sum_box.append(i)
+    for i in range(81):
+        sudoku_table.append(0)
+    select_list = [str(x) for x in select_list]
+    sudoku_num = [str(x) for x in sudoku_num]
+    select_num = True
+
+    for i in range(len(sudoku_num)):
+        sudoku1 = random.choices(sudoku_num)
+        temp = " ".join(sudoku1)
+        sudoku.append(temp)
+        sudoku_num.remove(temp)
+
+    sudoku = [int(x) for x in sudoku]
+    for a in range(len(sudoku_table)):
+        for b in range(len(sudoku)):
+            if a == b:
+                sudoku_table[a] = sudoku[b]
+
+    column1 = []
+    column2 = []
+    temp1 = []
+    temp = sudoku_table[3:6]
+    for i in range(1, 10):
+        column1.append(i)
+        column2.append(i)
+    first_value = sudoku_table[0:3]
+    for i in first_value:
+        column1.remove(i)
+    random.shuffle(column1)
+
+    temp_row2 = []
+    temp_row1 = column1[0:3]
+    for i in temp_row1:
+        temp_row2.append(i)
+
+    for x in temp:
+        temp_row1.append(x)
+    temp_row1 = list(dict.fromkeys(temp_row1))
+
+    total_temp_row1 = [x for x in column2 if x not in temp_row1]
+
+    temp1 = sudoku_table[6:9]
+
+    second_row = []
+    for a in total_temp_row1:
+        for b in temp1:
+            if a == b:
+                second_row.append(a)
+    for x in total_temp_row1:
+        second_row.append(x)
+    second_row = list(dict.fromkeys(second_row))
+    second_row = second_row[0:3]
+
+    for x in second_row:
+        temp_row2.append(x)
+
+    temp_row3 = [x for x in column2 if x not in temp_row2]
+    for x in temp_row3:
+        temp_row2.append(x)
+
+    d = 9
+    for a in temp_row2:
+        if d <= 17:
+            sudoku_table[d] = a
+            d += 1
+
+    total_box = []
+    total_box1 = []
+    total_box2 = []
+    for i in range(len(sudoku_table)):
+        if i in [0, 1, 2]:
+            total_box.append(sudoku_table[i])
+        if i in [9, 10, 11]:
+            total_box.append(sudoku_table[i])
+        if i in [3, 4, 5]:
+            total_box1.append(sudoku_table[i])
+        if i in [12, 13, 14]:
+            total_box1.append(sudoku_table[i])
+        if i in [6, 7, 8]:
+            total_box2.append(sudoku_table[i])
+        if i in [15, 16, 17]:
+            total_box2.append(sudoku_table[i])
+
+    sum_box1 = [x for x in sum_box if x not in total_box]
+    sum_box2 = [x for x in sum_box if x not in total_box1]
+    sum_box3 = [x for x in sum_box if x not in total_box2]
+
+    sum_box4 = sum_box1 + sum_box2 + sum_box3
+
+    d = 18
+    for a in sum_box4:
+        if d <= 26:
+            sudoku_table[d] = a
+            d += 1
+    variables = [], [], [], [], [], [], [], [], [], [], [], [], []
+    h_r1_c4, h_r1_c5, h_r1_c6, vertical, ver_8, ver_7, ver_6, ver_5, ver_4, ver_3, ver_2, ver_1, ver_0 = variables
+    box_row3 = []
+    box_row4 = []
+    box_row5 = []
+    box_row6 = []
+    for a in range(len(sudoku_table)):
+
+        if a in [27, 28, 29, 30, 31, 32, 33, 34, 35]:
+            row_four(sudoku_table)
+
+        if a in [36, 37, 38, 39, 40, 41, 42, 43, 44]:
+            row_five(sudoku_table)
+
+        if a in [45, 46, 47, 48, 49, 50, 51, 52, 53]:
+            row_six(sudoku_table)
+
+        if a in [54, 55, 56, 57, 58, 59, 60, 61, 62]:
+            row_seven(sudoku_table)
+
+        if a in [63, 64, 65, 66, 67, 68, 69, 70, 71]:
+            row_eight(sudoku_table)
+
+        if a in [72, 73, 74, 75, 76, 77, 78, 79, 80]:
+            row_nine(sudoku_table)
+    plus = 0
+    minus = 0
+    percent = 0
+    percent1 = 0
+    percent = int(correct) / int(rotation) * 100
+    percent1 = int(error) / int(rotation) * 100
+    # print(f"correct => {correct} <{int(percent)}%>   error => {error} <{int(percent1)}%>")
+    for x in sudoku_table:
+        if x == 0:
+            minus += 1
+    if minus > 0:
+        # error +=1
+        pass
+    elif minus == 0:
+        rotate += 1
+        print(f"correct => {correct} <{int(percent)}%>   error => {error} <{int(percent1)}%>")
+        main_table(sudoku_table)
+        correct += 1
+    '''enter = input ("press any key")'''
+print("goobye")
+
+
+
+
+
+
+
